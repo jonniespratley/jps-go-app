@@ -1,0 +1,51 @@
+<section>
+    <div class="page-header">
+        <ul class="list-unstyled list-inline pull-right">
+            <li><a href="<%= newThemesPath() %>" class="btn btn-primary">Create New Theme</a></li>
+          </ul>
+      <h1>Themes</h1>
+    </div>
+    
+    
+    
+    <table class="table table-striped table-responsive">
+      <thead>
+      <th>URI</th>
+        <th>DisplayName</th>
+        <th>BaseUri</th>
+        <th>Main</th>
+        <th>Error</th>
+        <th>ErrorChromeless</th>
+        <th>&nbsp;</th>
+      </thead>
+      <tbody>
+        <%= for (theme) in themes { %>
+          <tr>
+          <td><%= theme.URI %></td>
+          <td><%= theme.DisplayName %></td>  
+          <td><%= theme.BaseUri %></td>
+            <td><%= theme.Main %></td>
+            <td><%= theme.Error %></td>
+            <td><%= theme.ErrorChromeless %></td>
+            
+            <td>
+              <div class="pull-right">
+                <a href="<%= themePath({ theme_id: theme.ID }) %>" class="btn btn-info">View</a>
+                <a href="<%= editThemePath({ theme_id: theme.ID }) %>" class="btn btn-warning">Edit</a>
+                <a href="<%= themePath({ theme_id: theme.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+              </div>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    
+    <div class="text-center">
+      <%= paginator(pagination) %>
+    </div>
+    
+    
+    <h2>Inspect</h2>
+    <%= inspect(themes) %>
+    
+</section>

@@ -1,0 +1,6 @@
+- id: "theme.created.success"
+  translation: "Theme was successfully created."
+- id: "theme.updated.success"
+  translation: "Theme was successfully updated."
+- id: "theme.destroyed.success"
+  translation: "Theme was successfully destroyed."

@@ -1,0 +1,12 @@
+create_table("themes") {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("uri", "string", {})
+	t.Column("base_uri", "string", {})
+	t.Column("main", "string", {})
+	t.Column("error", "string", {})
+	t.Column("error_chromeless", "string", {})
+	t.Column("options", "text", {"null": true})
+	t.Column("display_name", "string", {})
+	t.Column("demo_link", "text", {"null": true})
+	t.Column("description", "text", {"null": true})
+}

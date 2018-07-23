@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>New Theme</h1>
+</div>
+
+<%= form_for(theme, {action: themesPath(), method: "POST"}) { %>
+  <%= partial("themes/form.html") %>
+  <a href="<%= themesPath() %>" class="btn btn-warning" data-confirm="Are you sure?">Cancel</a>
+<% } %>

@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>Edit Theme</h1>
+</div>
+
+<%= form_for(theme, {action: themePath({ theme_id: theme.ID }), method: "PUT"}) { %>
+  <%= partial("themes/form.html") %>
+  <a href="<%= themePath({ theme_id: theme.ID }) %>" class="btn btn-warning" data-confirm="Are you sure?">Cancel</a>
+<% } %>

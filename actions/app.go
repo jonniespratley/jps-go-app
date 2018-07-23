@@ -2,15 +2,17 @@ package actions
 
 import (
 	"github.com/gobuffalo/buffalo"
-	"github.com/gobuffalo/buffalo/middleware"
-	"github.com/gobuffalo/buffalo/middleware/ssl"
 	"github.com/gobuffalo/envy"
-	"github.com/unrolled/secure"
-
+	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/buffalo/middleware"
 	"github.com/gobuffalo/buffalo/middleware/csrf"
 	"github.com/gobuffalo/buffalo/middleware/i18n"
-	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/buffalo/middleware/ssl"
+	
+	"github.com/unrolled/secure"
+
 	"github.com/jonniespratley/jps_go_app/models"
+	"github.com/markbates/goth/gothic"
 )
 
 // ENV is used to help switch settings based on where the
@@ -31,6 +33,8 @@ func App() *buffalo.App {
 		// Automatically redirect to SSL
 		app.Use(forceSSL())
 
+		//app.Use(middleware.SetContentType("application/json"))
+
 		if ENV == "development" {
 			app.Use(middleware.ParameterLogger)
 		}
@@ -50,6 +54,10 @@ func App() *buffalo.App {
 		app.GET("/", HomeHandler)
 
 		app.Resource("/users", UsersResource{})
+		app.Resource("/themes", ThemesResource{})
+		auth := app.Group("/auth")
+		auth.GET("/{provider}", buffalo.WrapHandlerFunc(gothic.BeginAuthHandler))
+		auth.GET("/{provider}/callback", AuthCallback)
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
