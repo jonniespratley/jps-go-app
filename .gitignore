@@ -13,3 +13,4 @@ jps_go_app
 .grifter/
 .env
 *.tar.bz2
+dep.env
