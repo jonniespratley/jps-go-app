@@ -1,6 +1,6 @@
 # This is a multi-stage Dockerfile and requires >= Docker 17.05
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-FROM gobuffalo/buffalo:v0.12.4 as builder
+FROM gobuffalo/buffalo:latest as builder
 
 RUN mkdir -p $GOPATH/src/github.com/jonniespratley/jps_go_app
 WORKDIR $GOPATH/src/github.com/jonniespratley/jps_go_app

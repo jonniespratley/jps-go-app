@@ -1,7 +1,7 @@
 #!/bin/bash
 # build-and-upload.sh
 readonly app=jps_go_app
-readonly app_image=jps_go_app:latest
+readonly app_image=jsapps/jps_go_app:latest
 readonly app_docker=Dockerfile
 
 readonly nginx_image=nginx:latest
