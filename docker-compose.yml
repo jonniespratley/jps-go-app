@@ -18,9 +18,9 @@ services:
   ####################
   # Go App Container
   app:
-    #image: toodo
-    build: .
-    #container_name: app
+    image: jsapps/jps_go_app
+    #build: .
+    container_name: app
     restart: always
     depends_on:
       - db
