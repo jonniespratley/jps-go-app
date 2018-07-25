@@ -1,0 +1,46 @@
+version: '3'
+services:   
+  ####################
+  # DB Container
+  db:
+    image: postgres:latest
+    container_name: pg_db
+    environment:
+      POSTGRES_DB: jps_go_app_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  
+  ####################
+  # Go App Container
+  app:
+    #image: toodo
+    build: .
+    #container_name: app
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    environment: 
+      - SESSION_SECRET=${SESSION_SECRET}
+      - DATABASE_URL=${DATABASE_URL}
+
+  ####################
+  # Web Proxy Container
+  web:
+    depends_on:
+      - app
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+
+volumes:
+  pg-data:

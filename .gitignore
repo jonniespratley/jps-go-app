@@ -12,3 +12,4 @@ jps_go_app
 .vscode/
 .grifter/
 .env
+*.tar.bz2
