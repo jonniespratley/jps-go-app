@@ -1,0 +1,15 @@
+<div class="top-app-bar__frame">
+  <div class="drawer-container-flex">
+
+    <!-- SIDEBAR -->
+    <%= partial("partials/layout-sidebar.html") %>
+
+    <!-- NAVBAR -->
+    <%= partial("partials/layout-navbar.html") %>
+
+    <!-- CONTENT -->
+    <main class="mdc-top-app-bar--fixed-adjust">
+      <%= yield %>
+    </main>
+  </div>
+</div>
