@@ -9,15 +9,50 @@
     <meta name="csrf-param" content="authenticity_token" />
     <meta name="csrf-token" content="<%= authenticity_token %>" />
     <link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
+
+    <style>
+    .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: red;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+<script src='<%= assetPath("js/lib/pace.min.js") %>'></script>
   </head>
   <body>
 
     
-      <%= partial("partials/navbar.html") %>
+    <%= partial("partials/navbar.html") %>
 
     <div class="container-fluid">
-      <%= partial("partials/flash.html") %>
-      <%= yield %>
+      
+
+      <div class="row">
+          <%= partial("partials/sidebar.html") %>
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+              <%= partial("partials/flash.html") %>
+              <%= yield %>
+          </main>
+      </div>
+      
+      
     </div>
 
 
