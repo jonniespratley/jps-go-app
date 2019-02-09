@@ -7,7 +7,9 @@
   "scripts": {
     "start": "",
     "dev": "buffalo dev",
-    "test": "buffalo test"
+    "test": "buffalo test",
+    "docker": "docker build -t jsapps/jps_go_app .",
+    "docker-compose": "docker-compose up"
   },
   "engines": {
     "node": ">=8",
